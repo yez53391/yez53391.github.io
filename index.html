@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- index.html —— 网页版主页面：三个部分（①输入 ②单条结果 ③批量排序）都在这一个页面里，用按钮切换。
+     纯静态网页：所有计算都在浏览器里完成，不连服务器、不加载任何网上资源。 -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>埋地管道外腐蚀深度预测（v1 演示）</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>多源小样本下埋地管道外腐蚀深度预测与缺陷风险分级系统 <small>v1 演示</small></h1>
+  <nav><a id="nav-input">① 单条输入</a> <a id="nav-batch">③ 批量排序</a></nav>
+</header>
+<main>
+  <!-- 第 1 页：输入页（11 行输入框由 app.js 自动生成） -->
+  <section id="page-input" class="page active">
+    <h2>第 1 页：输入 11 项参数</h2>
+    <div id="input-errors" class="error" style="display:none"></div>
+    <form id="input-form" novalidate>
+      <table class="form" id="input-table">
+        <tr><th>中文名</th><th>英文列名</th><th>单位</th><th>填写</th></tr>
+      </table>
+      <button type="submit">预测</button>
+    </form>
+  </section>
+
+  <!-- 第 2 页：单条预测结果 -->
+  <section id="page-result" class="page">
+    <h2>第 2 页：单条预测结果</h2>
+    <div class="big">
+      <p>预测深度：<b id="r-pred"></b></p>
+      <p><span class="level"></span>% 区间：<b id="r-interval"></b></p>
+      <p>风险等级：<b class="grey" id="r-grade"></b></p>
+      <p class="red" id="r-warning" style="display:none"></p>
+    </div>
+    <details><summary>本次输入</summary><table class="form" id="r-inputs"></table></details>
+    <p><a href="#" id="back-input">← 返回重新输入</a></p>
+  </section>
+
+  <!-- 第 3 页：批量排序 -->
+  <section id="page-batch" class="page">
+    <h2>第 3 页：批量排序</h2>
+    <p>上传 CSV 文件，第一行是列名，必须包含这 11 列（英文列名）：<br><code id="col-list"></code><br>
+    可选：再加一列 <code>编号</code>（或 id / entry）用于标识每一行，只用来显示，不参与预测。
+    示例文件：<a href="sample_batch.csv" download>sample_batch.csv</a>（含 3 个测试例子）。</p>
+    <input type="file" id="batch-file" accept=".csv"> <button id="batch-run">上传并计算</button>
+    <div id="batch-errors" class="error" style="display:none"></div>
+    <div id="batch-result" style="display:none">
+      <p id="batch-summary"></p>
+      <table class="result" id="batch-table"></table>
+      <button id="batch-export">导出结果为 CSV</button>
+    </div>
+  </section>
+</main>
+<footer>模型：SVR（PLOS ONE 2026 公开数据 259 组训练）｜25 折交叉验证 R²=0.556±0.205，RMSE=1.31 mm，MAE=0.76 mm｜<span class="level"></span>% 区间半宽 <span id="hw"></span> mm｜所有计算在本浏览器内完成，数据不上传</footer>
+
+<!-- 脚本加载顺序：配置 -> 模型参数 -> 分级 -> 预测 -> 页面逻辑（全部是本地文件） -->
+<script src="config.js"></script>
+<script src="model.js"></script>
+<script src="grading.js"></script>
+<script src="predictor.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

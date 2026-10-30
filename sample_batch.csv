@@ -1,0 +1,4 @@
+﻿编号,pipe_age_year,pH,pipe_soil_potential_V,resistivity_ohm_m,water_content_pct,bulk_density_g_per_ml,chloride_ppm,bicarbonate_ppm,sulfate_ppm,redox_potential_mV,coating_type
+例子1-浅,19,6.84,-1.95,36.0,27.7,1.26,7.44,12.93,343.3,235.0,WTC
+例子2-中等,50,6.79,-0.75,41.0,26.9,1.17,21.06,65.09,9.75,65.0,CTC
+例子3-极端深坑,23,6.99,-1.0,45.7,30.1,1.26,146.2,169.2,115.0,125.0,WTC

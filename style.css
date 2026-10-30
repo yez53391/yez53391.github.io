@@ -1,0 +1,21 @@
+/* style.css —— 页面样式（本地文件，不加载任何网上的字体或脚本） */
+body { font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif; margin: 0; background: #f6f7f9; color: #222; }
+header { background: #1f4e79; color: #fff; padding: 12px 24px; }
+header h1 { font-size: 20px; margin: 0 0 6px; }
+header small { font-weight: normal; opacity: .8; }
+nav a { color: #fff; margin-right: 20px; }
+main { padding: 20px 24px; max-width: 960px; }
+footer { color: #777; font-size: 12px; padding: 12px 24px; }
+table { border-collapse: collapse; background: #fff; margin: 10px 0; }
+th, td { border: 1px solid #ccc; padding: 6px 12px; text-align: left; }
+th { background: #e8eef5; }
+input[type=text], select { width: 200px; padding: 4px; font-size: 15px; }
+button { font-size: 16px; padding: 6px 24px; margin: 8px 0; cursor: pointer; }
+.big p { font-size: 28px; margin: 14px 0; }
+.grey { color: #888; }
+.red { color: #d00; font-weight: bold; }
+.error { background: #fdecea; border: 1px solid #f5c2c0; color: #b00; padding: 8px 14px; }
+/* 以下为网页版新增：页面切换、导航按钮样式 */
+.page { display: none; }
+.page.active { display: block; }
+nav a { cursor: pointer; text-decoration: underline; }
